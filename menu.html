@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>서울대학교 탄소중립캠퍼스 - 메뉴</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+    /* 기본 스타일 리셋 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.3;
+      color: #424443;
+      overflow-x: hidden;
+      background-color: #FCFCFC;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    ul, li {
+      list-style: none;
+    }
+    
+    /* 상단 네비게이션 */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 120px;
+      margin: 0 auto;
+      padding: 0 80px 0 60px;
+      background-color: #ffffff;
+      border-bottom: 1px solid #F0F0F0;
+      position: relative;
+    }
+    
+    /* 로고 스타일 */
+    .logo {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    
+    .logo-icon {
+      width: 53px;
+      height: 53px;
+      flex-shrink: 0;
+      background-image: url('logo.png');
+      background-color: #6ECD8E;
+      background-size: cover;
+      background-position: center;
+      border-radius: 0;
+    }
+    
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .logo-text p {
+      font-size: 14px;
+      color: #6ECD8E;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    
+    .logo-text h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #6ECD8E;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+    
+    /* 메인 네비게이션 - 1단계 */
+    .main-nav {
+      display: flex;
+      align-items: center;
+    }
+    
+    .main-nav > ul {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .main-nav > ul > li {
+      position: relative;
+    }
+    
+    .main-nav > ul > li > a {
+      display: block;
+      font-size: 20px;
+      font-weight: 500;
+      color: #424443;
+      padding: 8px 4px;
+      position: relative;
+      white-space: nowrap;
+    }
+    
+    .main-nav > ul > li:hover > a {
+      color: #6ECD8E;
+    }
+    
+    .main-nav > ul > li.active > a {
+      color: #6ECD8E;
+      border-bottom: 2px solid #6ECD8E;
+    }
+    
+    /* 드롭다운 메뉴 - 2단계 */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.90) 0%, rgba(255, 255, 255, 0.90) 65.41%, rgba(234, 249, 235, 0.90) 145.36%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid #eee;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+    
+    .main-nav > ul > li:hover .dropdown-menu,
+    .main-nav > ul > li.open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .dropdown-menu li {
+      margin-bottom: 12px;
+    }
+    
+    .dropdown-menu li:last-child {
+      margin-bottom: 0;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      font-size: 16px;
+      color: #424443;
+      transition: color 0.2s;
+      padding: 5px 0;
+    }
+    
+    .dropdown-menu a:hover {
+      color: #6ECD8E;
+    }
+    
+    /* 모바일 햄버거 메뉴 */
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .mobile-toggle span {
+      width: 100%;
+      height: 2px;
+      background-color: #6ECD8E;
+      transition: 0.3s;
+    }
+    
+    /* 반응형 스타일 */
+    @media (max-width: 1280px) {
+      .header {
+        height: 100px;
+        padding: 0 60px 0 40px;
+      }
+      
+      .main-nav > ul {
+        gap: 30px;
+      }
+      
+      .main-nav > ul > li > a {
+        font-size: 18px;
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      .header {
+        height: 90px;
+        padding: 0 40px 0 30px;
+      }
+      
+      .main-nav > ul {
+        gap: 20px;
+      }
+      
+      .main-nav > ul > li > a {
+        font-size: 16px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .header {
+        height: 80px;
+        padding: 0 20px;
+      }
+      
+      .mobile-toggle {
+        display: flex;
+      }
+      
+      .main-nav {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: none;
+      }
+      
+      .main-nav.open {
+        display: block;
+      }
+      
+      .main-nav > ul {
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .main-nav > ul > li {
+        width: 100%;
+      }
+      
+      .main-nav > ul > li > a {
+        padding: 12px 0;
+        font-size: 18px;
+      }
+      
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        padding: 0 0 0 20px;
+        display: none;
+      }
+      
+      .main-nav > ul > li.open .dropdown-menu {
+        display: block;
+      }
+      
+      .dropdown-menu a {
+        padding: 8px 0;
+        font-size: 16px;
+      }
+      
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .logo-text h1 {
+        font-size: 20px;
+      }
+      
+      .logo-text p {
+        font-size: 12px;
+      }
+    }
+    
+    /* 하단 배경 이미지 */
+    .background-image {
+      width: 100%;
+      height: 60px;
+      background-color: #6ECD8E;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 상단 네비게이션 메뉴 -->
+  <header class="header">
+    <a href="#" class="logo">
+      <div class="logo-icon"></div>
+      <div class="logo-text">
+        <p>Carbon Neutral Campus Initiative</p>
+        <h1>서울대학교 탄소중립캠퍼스</h1>
+      </div>
+    </a>
+    
+    <nav class="main-nav">
+      <ul>
+        <li class="active open">
+          <a href="#">온실가스</a>
+          <ul class="dropdown-menu" style="opacity: 1; visibility: visible; transform: translateY(0);">
+            <li><a href="#">온실가스 배출량</a></li>
+            <li><a href="#">온실가스 감축활동</a></li>
+            <li><a href="#">온실가스 맵</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">에너지</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">에너지 소비량</a></li>
+            <li><a href="#">태양광 발전</a></li>
+            <li><a href="#">전력 사용량</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">그린캠퍼스</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">지속가능 활동</a></li>
+            <li><a href="#">그린리더십</a></li>
+            <li><a href="#">캠퍼스 역사</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">그린아카이브</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">자료실</a></li>
+            <li><a href="#">그린레포트</a></li>
+            <li><a href="#">인포그래픽</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">탄소중립연구자 네트워크</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">연구자 목록</a></li>
+            <li><a href="#">연구 분야</a></li>
+            <li><a href="#">주요 연구</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">에너지 데이터 플랫폼</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">데이터 조회</a></li>
+            <li><a href="#">데이터 분석</a></li>
+            <li><a href="#">통계 자료</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    
+    <button class="mobile-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div style="height: 400px; display: flex; justify-content: center; align-items: center; text-align: center;">
+    <div>
+      <h2 style="font-size: 2rem; color: #6ECD8E; margin-bottom: 1rem;">드롭다운 메뉴 예시 페이지</h2>
+      <p style="font-size: 1.2rem;">온실가스 메뉴가 활성화되어 있고 하위메뉴가 표시되어 있습니다.</p>
+    </div>
+  </div>
+
+  <script>
+    // 모바일 메뉴 토글
+    document.querySelector('.mobile-toggle').addEventListener('click', function() {
+      document.querySelector('.main-nav').classList.toggle('open');
+    });
+    
+    // 모바일에서 서브메뉴 토글
+    if (window.innerWidth <= 768) {
+      const menuItems = document.querySelectorAll('.main-nav > ul > li');
+      
+      menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          // 메뉴 항목 자체를 클릭했을 때만 토글
+          if (e.target === this.querySelector('a')) {
+            e.preventDefault();
+            this.classList.toggle('open');
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html> 

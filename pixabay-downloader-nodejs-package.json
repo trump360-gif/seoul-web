@@ -1,0 +1,32 @@
+{
+  "name": "pixabay-downloader",
+  "version": "1.0.0",
+  "description": "픽사베이 이미지 자동 검색 및 다운로드 도구",
+  "main": "pixabay-downloader.js",
+  "bin": {
+    "pixabay-downloader": "./pixabay-downloader.js"
+  },
+  "scripts": {
+    "start": "node pixabay-downloader.js"
+  },
+  "keywords": [
+    "pixabay",
+    "image",
+    "download",
+    "api",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "chalk": "^4.1.2",
+    "cli-progress": "^3.12.0",
+    "commander": "^11.1.0",
+    "ora": "^5.4.1",
+    "sanitize-filename": "^1.6.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
